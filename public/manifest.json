@@ -1,0 +1,28 @@
+{
+  "short_name": "Bus Routes",
+  "name": "Auengun's NexTrip Based Bus Routes",
+  "permissions": [
+          "storage"
+  ],
+  "icons": [
+    {
+      "src": "launcher-icon-1x.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "launcher-icon-2x.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "launcher-icon-4x.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#9c27b0",
+  "background_color": "#9c27b0"
+}
