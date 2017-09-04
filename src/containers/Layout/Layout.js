@@ -14,8 +14,6 @@ import * as layoutActions from '../../actions/layoutActions'
 import FourOhFour from '../404/404'
 import Sidenav from '../Sidenav/containers/Sidenav'
 
-import './Layout.scss'
-
 export class Layout extends React.Component {
   render () {
     return (
@@ -24,7 +22,7 @@ export class Layout extends React.Component {
           defaultTitle="Bus Routes"
           titleTemplate="%s - Bus Routes"
         />
-        <div className="layout-header">
+        <div>
           <AppBar>
             <Toolbar>
               <IconButton onClick={this.props.layoutActions.openSidenav} color="contrast" aria-label="Menu">
