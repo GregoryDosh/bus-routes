@@ -4,6 +4,7 @@ const baseConfig = {
   graphql: {
     host: '//localhost:5000/graphql',
   },
+  googleMaps: "AIzaSyC3XH68CcTNbGGsxnHBCowhW2OaV_ITF2g",
 }
 
 const environmentConfigs = {

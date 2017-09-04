@@ -1,0 +1,14 @@
+.sidenav a:link {
+    text-decoration: none;
+}
+
+.sidenav {
+
+  &-header {
+    height: 64px;
+  }
+
+  &-content {
+    display: flex;
+  }
+}

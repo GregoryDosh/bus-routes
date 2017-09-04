@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import * as layoutActions from '../../actions/layoutActions'
-import Layout from '../../components/Layout/Layout.js'
+import Home from '../../components/Home/Home.js'
 
 function mapDispatchToProps (dispatch) {
   return {
@@ -16,4 +16,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

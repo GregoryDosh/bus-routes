@@ -3,15 +3,15 @@ import { shallow } from 'enzyme'
 import { Provider } from 'react-redux'
 
 import configureStore from '../../store/configureStore'
-import Layout from './Layout'
+import Sidenav from './Sidenav'
 
-describe('Layout component', () => {
+describe('Sidenav component', () => {
   const store = configureStore()
 
   it('renders', () => {
     const layout = shallow(
       <Provider store={store}>
-        <Layout />
+        <Sidenav />
       </Provider>, document.createElement('div')
     )
     expect(layout).toHaveLength(1)

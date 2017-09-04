@@ -1,15 +1,15 @@
-import { stringColorHash } from './colorService'
+import { stringHSLColorHash } from './colorService'
 
-describe('stringColorHash', () => {
+describe('stringHSLColorHash', () => {
   it('should return a color with no input', () => {
-    expect(stringColorHash('')).toEqual(355)
+    expect(stringHSLColorHash('')).toEqual(117)
   })
 
   it('should return a color with some text', () => {
-    expect(stringColorHash('Test Input')).toEqual(328)
+    expect(stringHSLColorHash('Test Input')).toEqual(1)
   })
 
   it('should return different colors for different text', () => {
-    expect(stringColorHash('Test Input')).not.toEqual(stringColorHash('Other Test Input'))
+    expect(stringHSLColorHash('Test Input')).not.toEqual(stringHSLColorHash('Other Test Input'))
   })
 })
