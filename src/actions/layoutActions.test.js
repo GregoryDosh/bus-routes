@@ -24,5 +24,4 @@ describe('layout actions', () => {
     }
     expect(actions.closeSidenav()).toEqual(expectedAction)
   })
-
 })

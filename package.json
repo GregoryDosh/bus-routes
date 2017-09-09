@@ -97,8 +97,8 @@
     "lint": "esw --watch --clear src/ scripts/ config/",
     "test": "node scripts/test.js --env=jsdom",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage",
-    "predeploy": "npm run build",
-    "deploy": "esw src/ scripts/ config/ && gh-pages -d build"
+    "predeploy": "npm run test && esw src/ scripts/ config/ && npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
