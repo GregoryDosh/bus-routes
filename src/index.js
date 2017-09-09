@@ -26,16 +26,12 @@ const muiTheme = createMuiTheme({
   },
 })
 
-const App = () => (
-  <MuiThemeProvider theme={muiTheme}>
-    <BrowserRouter basename="/bus-routes">
-      {renderRoutes(routerConfig)}
-    </BrowserRouter>
-  </MuiThemeProvider>
-)
-
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <MuiThemeProvider theme={muiTheme}>
+      <BrowserRouter basename="/bus-routes">
+        {renderRoutes(routerConfig)}
+      </BrowserRouter>
+    </MuiThemeProvider>
   </Provider>, rootElement
 )

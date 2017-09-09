@@ -1,15 +1,15 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FourOhFour from './404'
+import Stop from './Stop'
 
-describe('FourOhFour component', () => {
+describe('Stop component', () => {
   it('renders', () => {
     const exampleProps = {
     }
 
     const tree = shallow(
-      <FourOhFour {...exampleProps} />
+      <Stop {...exampleProps} />
     )
     expect(tree).toHaveLength(1)
   })

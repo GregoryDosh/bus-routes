@@ -8,9 +8,9 @@ describe('Sidenav component', () => {
     const exampleProps = {
     }
 
-    const layout = shallow(
+    const tree = shallow(
       <Sidenav {...exampleProps} />
     )
-    expect(layout).toHaveLength(1)
+    expect(tree).toHaveLength(1)
   })
 })

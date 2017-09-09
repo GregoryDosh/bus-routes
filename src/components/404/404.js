@@ -43,4 +43,13 @@ FourOhFour.propTypes = {
   }).isRequired,
 }
 
+FourOhFour.defaultProps = {
+  layoutActions: {
+    setHelmetTitle: () => {},
+  },
+  location: {
+    pathname: '',
+  },
+}
+
 export default FourOhFour

@@ -46,7 +46,12 @@ Layout.propTypes = {
 
 Layout.defaultProps = {
   helmetTitle: undefined,
-  layoutActions: {},
+  layoutActions: {
+    sidenav: () => {},
+  },
+  route: {
+    routes: [],
+  },
 }
 
 export default Layout

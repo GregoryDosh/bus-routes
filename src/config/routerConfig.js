@@ -1,11 +1,10 @@
 import React from 'react'
-import HomeIcon from 'material-ui-icons/Home'
+import { Redirect } from 'react-router'
 
-import FourOhFour from '../containers/404/404.js'
-import Home from '../containers/Home/Home.js'
-import Layout from '../containers/Layout/Layout.js'
-import BusEast from '../images/bus-eastbound.svg'
-import BusWest from '../images/bus-westbound.svg'
+import FourOhFour from '../containers/404/404'
+import Home from '../containers/Home/Home'
+import Stop from '../containers/Stop/Stop'
+import Layout from '../containers/Layout/Layout'
 
 export const routerConfig = [
   { component: Layout,
@@ -14,22 +13,16 @@ export const routerConfig = [
         exact: true,
         component: Home,
       },
-      // { path: '/stop',
-      //   exact: true,
-      //   component: () => <Redirect to="/"/>,
-      // },
-      // { path: '/stop/:stop',
-      //   component: BusRoutes,
-      // },
+      { path: '/stop',
+        exact: true,
+        component: () => <Redirect to="/" />,
+      },
+      { path: '/stop/:stop',
+        component: Stop,
+      },
       { path: '*',
         component: FourOhFour,
       },
     ],
   },
-]
-
-export const sidenavConfig = [
-  {path: '/', name: 'Home', icon: <HomeIcon />},
-  {path: '/stop/17860', name: '4th Street & Nicollet Mall', icon: <img alt="" src={BusEast} />},
-  {path: '/stop/18563', name: 'Bandana Square', icon: <img alt="" src={BusWest} />},
 ]

@@ -1,21 +1,23 @@
 import merge from 'lodash/merge'
 
 const baseConfig = {
-  graphql: {
-    host: '//localhost:5000/graphql',
+  stop: {
+    descriptionHost: (stopInt) => {
+      return `//localhost/stop=${stopInt}`
+      // return `https://www.metrotransit.org/NexTripBadge.aspx?stopnumber=${stopInt}`
+    },
   },
-  googleMaps: "AIzaSyC3XH68CcTNbGGsxnHBCowhW2OaV_ITF2g",
+  googleMaps: 'AIzaSyC3XH68CcTNbGGsxnHBCowhW2OaV_ITF2g',
 }
 
 const environmentConfigs = {
   development: {
-    graphql: {
-      host: '//localhost:5000/graphql',
-    },
   },
   production: {
-    graphql: {
-      host: '//localhost:5000/graphql',
+    stop: {
+      descriptionHost: (stopInt) => {
+        return `https://www.metrotransit.org/NexTripBadge.aspx?stopnumber=${stopInt}`
+      },
     },
   },
 }

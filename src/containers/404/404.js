@@ -4,15 +4,15 @@ import { connect } from 'react-redux'
 import * as layoutActions from '../../actions/layoutActions'
 import FourOhFour from '../../components/404/404.js'
 
-function mapDispatchToProps (dispatch) {
-  return {
-    layoutActions: bindActionCreators(layoutActions, dispatch),
-  }
-}
-
 function mapStateToProps (state) {
   return {
     helmetTitle: state.layout.helmetTitle,
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    layoutActions: bindActionCreators(layoutActions, dispatch),
   }
 }
 

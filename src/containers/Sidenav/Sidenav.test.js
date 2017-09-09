@@ -9,11 +9,11 @@ describe('Sidenav component', () => {
   const store = configureStore()
 
   it('renders', () => {
-    const layout = shallow(
+    const tree = shallow(
       <Provider store={store}>
         <Sidenav />
       </Provider>, document.createElement('div')
     )
-    expect(layout).toHaveLength(1)
+    expect(tree).toHaveLength(1)
   })
 })

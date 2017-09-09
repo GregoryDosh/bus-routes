@@ -6,11 +6,14 @@ import Layout from './Layout'
 describe('Layout component', () => {
   it('renders', () => {
     const exampleProps = {
+      route: {
+        routes: [],
+      },
     }
 
-    const layout = shallow(
+    const tree = shallow(
       <Layout {...exampleProps} />
     )
-    expect(layout).toHaveLength(1)
+    expect(tree).toHaveLength(1)
   })
 })
