@@ -33,10 +33,11 @@ export const getStopDescription = (stop) => {
         if (possibleMatch && possibleMatch.length > 1) {
           return dispatch(setStopDescription(stop, possibleMatch[1]))
         } else {
-          return dispatch(setStopDescription(stop, `Unknown Stop`))
+          return dispatch(setStopDescription(stop, `Unknown Stop ${stop}`))
         }
       }).catch(error => {
         console.error(error)
+        return dispatch(setStopDescription(stop, `Unknown Stop ${stop}`))
       })
   }
 }

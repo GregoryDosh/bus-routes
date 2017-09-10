@@ -20,7 +20,7 @@ function mapDispatchToProps (dispatch) {
 }
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  let stopNumber = stateProps.stop.number || ownProps.match.params.stop
+  let stopNumber = ownProps.match.params.stop || stateProps.stop.number
   if (typeof stopNumber === 'string') {
     stopNumber = parseInt(stopNumber) || 0
   }

@@ -20,8 +20,11 @@ class Stop extends React.Component {
   }
 
   componentWillUpdate (nextProps, nextState) {
-    if (this.props.stop.number !== nextProps.stop.number) {
+    if (this.props.stop.description !== nextProps.stop.description) {
       this.props.layoutActions.setHelmetTitle(`${nextProps.stop.description} - ${nextProps.stop.number}`)
+    }
+
+    if (this.props.stop.number !== nextProps.stop.number) {
       this.props.stopActions.getStopDescription(nextProps.stop.number)
       this.props.stopActions.getStopBusses(nextProps.stop.number)
     }
@@ -31,7 +34,7 @@ class Stop extends React.Component {
     return (
       <div style={{marginTop: '64px', marginLeft: '10px', marginRight: '10px'}}>
         <Helmet title={this.props.helmetTitle} />
-        <Typography type="display2" gutterBottom>
+        <Typography type="display2" align="center" gutterBottom>
           {this.props.stop.description}
         </Typography>
         <Grid
