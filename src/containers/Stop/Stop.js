@@ -30,7 +30,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     ...stateProps,
     ...dispatchProps,
     stop: {
-      description: stateProps.stop.description,
+      ...stateProps.stop,
       number: stopNumber,
     },
   }

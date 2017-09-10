@@ -9,6 +9,7 @@ describe('layout reducer', () => {
       {
         description: 'Stop',
         number: 0,
+        busses: [],
       }
     )
   })

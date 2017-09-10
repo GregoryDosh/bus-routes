@@ -1,0 +1,40 @@
+.bus {
+  width: 415px;
+  max-height: 525px;
+
+  > div > div span:first-child {
+    width: 280px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &:active, &:hover {
+    > div > div > span:first-child {
+      width: 300px;
+      line-height: 32px;
+      overflow: visible;
+      white-space: normal;
+      position: absolute;
+      background-color: #FFF;
+      border: grey;
+      border-radius: 15px;
+      border-style: outset;
+      margin-top: -3px;
+      margin-left: -3px;
+    }
+
+    > div > div > span:nth-child(2) {
+      margin-top: 40px;
+    }
+  }
+}
+
+.busMedia {
+  background-position: center center;
+  height: 350px;
+  width: 415px !important;
+  background-size: auto !important;
+  border-radius: 50px;
+  border: none;
+}

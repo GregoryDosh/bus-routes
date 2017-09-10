@@ -4,10 +4,12 @@ const baseConfig = {
   stop: {
     descriptionHost: (stopInt) => {
       return `//localhost/stop=${stopInt}`
-      // return `https://www.metrotransit.org/NexTripBadge.aspx?stopnumber=${stopInt}`
+    },
+    bussesHost: (stopInt) => {
+      return `//svc.metrotransit.org/NexTrip/${stopInt}?format=json`
     },
   },
-  googleMaps: 'AIzaSyC3XH68CcTNbGGsxnHBCowhW2OaV_ITF2g',
+  googleMapsAPIKey: 'AIzaSyC3XH68CcTNbGGsxnHBCowhW2OaV_ITF2g',
 }
 
 const environmentConfigs = {

@@ -1,8 +1,10 @@
-import Paper from 'material-ui/Paper'
+import Grid from 'material-ui/Grid'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Typography from 'material-ui/Typography'
 import { Helmet } from 'react-helmet'
+
+import Bus from '../Bus/Bus'
 
 import './Stop.scss'
 
@@ -10,6 +12,7 @@ class Stop extends React.Component {
   componentWillMount () {
     this.props.layoutActions.setHelmetTitle(`${this.props.stop.description} - ${this.props.stop.number}`)
     this.props.stopActions.getStopDescription(this.props.stop.number)
+    this.props.stopActions.getStopBusses(this.props.stop.number)
   }
 
   componentWillUnmount () {
@@ -17,23 +20,35 @@ class Stop extends React.Component {
   }
 
   componentWillUpdate (nextProps, nextState) {
-    this.props.layoutActions.setHelmetTitle(`${nextProps.stop.description} - ${nextProps.stop.number}`)
+    if (this.props.stop.number !== nextProps.stop.number) {
+      this.props.layoutActions.setHelmetTitle(`${nextProps.stop.description} - ${nextProps.stop.number}`)
+      this.props.stopActions.getStopDescription(nextProps.stop.number)
+      this.props.stopActions.getStopBusses(nextProps.stop.number)
+    }
   }
 
   render () {
     return (
-      <div className="Stop">
+      <div style={{marginTop: '64px', marginLeft: '10px', marginRight: '10px'}}>
         <Helmet title={this.props.helmetTitle} />
-        <div className="Stop-Paper">
-          <Paper className="Stop-Message" elevation={5}>
-            <Typography type="display2" component="h1">
-              {this.props.stop.description}
-            </Typography>
-            <Typography type="subheading">
-              Stop: {this.props.stop.number}
-            </Typography>
-          </Paper>
-        </div>
+        <Typography type="display2" gutterBottom>
+          {this.props.stop.description}
+        </Typography>
+        <Grid
+          container
+          justify={'flex-start'}
+          spacing={16}
+        >
+          { this.props.stop.busses.length > 0 &&
+          this.props.stop.busses.map((r, n) => {
+            return (
+              <Grid key={n} item>
+                <Bus {...r} />
+              </Grid>
+            )
+          })
+          }
+        </Grid>
       </div>
     )
   }
@@ -46,10 +61,19 @@ Stop.propTypes = {
   }).isRequired,
   stopActions: PropTypes.shape({
     getStopDescription: PropTypes.func.isRequired,
+    getStopBusses: PropTypes.func.isRequired,
   }).isRequired,
   stop: PropTypes.shape({
     description: PropTypes.string.isRequired,
     number: PropTypes.number.isRequired,
+    busses: PropTypes.arrayOf(PropTypes.shape({
+      departureText: PropTypes.string.isRequired,
+      departureTime: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      direction: PropTypes.string.isRequired,
+      location: PropTypes.string.isRequired,
+      route: PropTypes.string.isRequired,
+    })),
   }).isRequired,
 }
 
@@ -60,10 +84,12 @@ Stop.defaultProps = {
   },
   stopActions: {
     getStopDescription: () => {},
+    getStopBusses: () => {},
   },
   stop: {
     description: 'Stop',
     number: 0,
+    busses: [],
   },
 }
 
