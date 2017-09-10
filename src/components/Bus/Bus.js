@@ -20,7 +20,7 @@ const Bus = ({departureText, departureTime, description, direction, location, ro
     } else {
       markerColor = 'red'
     }
-    busImage = `http://maps.googleapis.com/maps/api/staticmap?size=400x350&maptype=roadmap&zoom=15&center=${location}&markers=color:${markerColor}|${location}&key=${apiConfig.googleMapsAPIKey}`
+    busImage = `//maps.googleapis.com/maps/api/staticmap?size=400x350&maptype=roadmap&zoom=15&center=${location}&markers=color:${markerColor}|${location}&key=${apiConfig.googleMapsAPIKey}`
   } else {
     if (direction === 'Eastbound') {
       busImage = eastBus
