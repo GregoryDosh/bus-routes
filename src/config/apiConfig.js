@@ -3,8 +3,7 @@ import merge from 'lodash/merge'
 const baseConfig = {
   stop: {
     descriptionHost: (stopInt) => {
-      // return `//localhost/stop=${stopInt}`
-      return `https://www.metrotransit.org/nextrip/${stopInt}`
+      return `//localhost/stop=${stopInt}`
     },
     bussesHost: (stopInt) => {
       return `//svc.metrotransit.org/NexTrip/${stopInt}?format=json`
