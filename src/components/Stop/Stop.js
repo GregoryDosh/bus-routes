@@ -39,8 +39,7 @@ class Stop extends React.Component {
         </Typography>
         <Grid
           container
-          justify={'flex-start'}
-          spacing={16}
+          justify="space-around"
         >
           { this.props.stop.busses.length > 0 &&
           this.props.stop.busses.map((r, n) => {
