@@ -3,22 +3,23 @@ import CloseIcon from 'material-ui-icons/Close'
 import Drawer from 'material-ui/Drawer'
 import IconButton from 'material-ui/IconButton'
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
+import HomeIcon from 'material-ui-icons/Home'
+import NewIcon from 'material-ui-icons/Place'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Toolbar from 'material-ui/Toolbar'
 import { Link } from 'react-router-dom'
 
-import './Sidenav.scss'
+import './SideNav.scss'
 
-const Sidenav = ({ open, handleClose, routes }) => (
+const SideNav = ({ open, handleClose, handleAddStopClick, routes }) => (
   <div>
     <Drawer
       open={open}
       onRequestClose={handleClose}
       onClick={handleClose}
-      className="sidenav"
     >
-      <div className="sidenav-header">
+      <div className="sideNav-header">
         <AppBar>
           <Toolbar>
             <IconButton onClick={handleClose} color="contrast" aria-label="Close">
@@ -28,14 +29,25 @@ const Sidenav = ({ open, handleClose, routes }) => (
           </Toolbar>
         </AppBar>
       </div>
-      <div className="sidenav-content">
+      <div className="sideNav-content">
         <List>
+          <Link to="/" tabIndex={-1}>
+            <ListItem button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </Link>
           { routes.map((route, n) => (
             <Link key={n} to={route.path} tabIndex={-1}>
               <ListItem button>
                 {route.icon &&
                   <ListItemIcon>
-                    {route.icon}
+                    {
+                      typeof route.icon === 'string' ? <img alt="" src={route.icon} />
+                        : route.icon
+                    }
                   </ListItemIcon>
                 }
                 <ListItemText primary={route.name} />
@@ -43,25 +55,37 @@ const Sidenav = ({ open, handleClose, routes }) => (
             </Link>
           ))
           }
+          <ListItem button onClick={handleAddStopClick}>
+            <ListItemIcon>
+              <NewIcon />
+            </ListItemIcon>
+            <ListItemText primary="Add Stop" />
+          </ListItem>
         </List>
       </div>
     </Drawer>
   </div>
 )
 
-Sidenav.propTypes = {
+SideNav.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
+  handleAddStopClick: PropTypes.func.isRequired,
   routes: PropTypes.arrayOf(PropTypes.shape({
     path: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    icon: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+    ]).isRequired,
   })).isRequired,
 }
 
-Sidenav.defaultProps = {
+SideNav.defaultProps = {
   open: false,
   handleClose: () => {},
+  handleAddStopClick: () => {},
   routes: [],
 }
 
-export default Sidenav
+export default SideNav

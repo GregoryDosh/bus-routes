@@ -1,15 +1,15 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import SideNav from './SideNav'
+import AddStop from './AddStop'
 
-describe('SideNav component', () => {
+describe('AddStop component', () => {
   it('renders', () => {
     const exampleProps = {
     }
 
     const tree = shallow(
-      <SideNav {...exampleProps} />
+      <AddStop {...exampleProps} />
     )
     expect(tree).toHaveLength(1)
   })

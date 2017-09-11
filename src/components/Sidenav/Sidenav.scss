@@ -1,14 +1,9 @@
-.sidenav a:link {
-    text-decoration: none;
-}
-
-.sidenav {
-
+.sideNav {
   &-header {
     height: 64px;
   }
 
-  &-content {
-    display: flex;
+  &-content a:link {
+    text-decoration: none;
   }
 }

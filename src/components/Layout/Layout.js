@@ -8,7 +8,8 @@ import Typography from 'material-ui/Typography'
 import { Helmet } from 'react-helmet'
 import { renderRoutes } from 'react-router-config'
 
-import Sidenav from '../../containers/Sidenav/Sidenav.js'
+import SideNav from '../../containers/SideNav/SideNav.js'
+import AddStop from '../../containers/AddStop/AddStop.js'
 import './Layout.scss'
 
 const Layout = ({ layoutActions, helmetTitle, route }) => (
@@ -20,15 +21,21 @@ const Layout = ({ layoutActions, helmetTitle, route }) => (
     <div className="appHeader">
       <AppBar>
         <Toolbar>
-          <IconButton onClick={layoutActions.openSidenav} color="contrast" aria-label="Menu">
+          <IconButton onClick={layoutActions.openSideNav} color="contrast" aria-label="Menu">
             <MenuIcon />
           </IconButton>
-          <Typography type="title" color="inherit">
+          <Typography type="title" color="inherit" style={{flex: '1'}}>
             {helmetTitle}
           </Typography>
+          { false &&
+            <IconButton onClick={layoutActions.openSideNav} color="contrast" aria-label="Menu">
+              <MenuIcon />
+            </IconButton>
+          }
         </Toolbar>
       </AppBar>
-      <Sidenav />
+      <SideNav />
+      <AddStop />
     </div>
     <div className="appBody">
       {renderRoutes(route.routes)}
@@ -40,7 +47,7 @@ Layout.propTypes = {
   route: PropTypes.object.isRequired,
   helmetTitle: PropTypes.string,
   layoutActions: PropTypes.shape({
-    openSidenav: PropTypes.func,
+    openSideNav: PropTypes.func,
   }),
 }
 

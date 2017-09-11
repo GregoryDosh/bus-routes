@@ -1,8 +1,10 @@
 import * as types from '../actions/actionTypes'
 
 const initialState = {
-  sidenavOpen: false,
+  sideNavOpen: false,
+  addStopOpen: false,
   helmetTitle: '',
+  routes: [],
 }
 
 export default function layoutReducer (state = initialState, action) {
@@ -10,19 +12,44 @@ export default function layoutReducer (state = initialState, action) {
     case types.OPEN_SIDE_NAV:
       return {
         ...state,
-        sidenavOpen: true,
+        sideNavOpen: true,
       }
 
     case types.CLOSE_SIDE_NAV:
       return {
         ...state,
-        sidenavOpen: false,
+        sideNavOpen: false,
+      }
+
+    case types.OPEN_ADD_STOP_DIALOG:
+      return {
+        ...state,
+        addStopOpen: true,
+      }
+
+    case types.CLOSE_ADD_STOP_DIALOG:
+      return {
+        ...state,
+        addStopOpen: false,
       }
 
     case types.SET_HELMET_TITLE:
       return {
         ...state,
         helmetTitle: action.helmetTitle,
+      }
+
+    case types.ADD_STOP:
+      return {
+        ...state,
+        routes: [
+          ...state.routes,
+          {
+            path: action.path,
+            name: action.name,
+            icon: action.icon,
+          },
+        ],
       }
 
     default:

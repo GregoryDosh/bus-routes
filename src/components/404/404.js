@@ -8,7 +8,7 @@ import './404.scss'
 
 class FourOhFour extends React.Component {
   componentWillMount () {
-    this.props.layoutActions.setHelmetTitle(`HTTP 404 - Not Found`)
+    this.props.layoutActions.setHelmetTitle('HTTP 404 - Not Found')
   }
 
   componentWillUnmount () {

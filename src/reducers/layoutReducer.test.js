@@ -7,8 +7,10 @@ describe('layout reducer', () => {
       reducer(undefined, {})
     ).toEqual(
       {
-        sidenavOpen: false,
+        sideNavOpen: false,
+        addStopOpen: false,
         helmetTitle: '',
+        routes: [],
       }
     )
   })
@@ -20,7 +22,7 @@ describe('layout reducer', () => {
         isOpen: true,
       })
     ).toEqual(
-      { sidenavOpen: true }
+      { sideNavOpen: true }
     )
   })
 
@@ -31,7 +33,7 @@ describe('layout reducer', () => {
         isOpen: false,
       })
     ).toEqual(
-      { sidenavOpen: false }
+      { sideNavOpen: false }
     )
   })
 

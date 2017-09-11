@@ -25,7 +25,7 @@ class Home extends React.Component {
               Welcome!
             </Typography>
             <Typography type="subheading">
-              Select a Bus Stop from the menu.
+              Select or add a new bus stop from the menu.
             </Typography>
           </Paper>
         </div>

@@ -1,22 +1,24 @@
 import { connect } from 'react-redux'
 
 import * as layoutActions from '../../actions/layoutActions'
-import { sidenavConfig } from '../../config/sidenavConfig'
-import SidenavComponent from '../../components/Sidenav/Sidenav'
+import SideNavComponent from '../../components/SideNav/SideNav'
 
 const mapStateToProps = (state) => {
   return {
-    routes: sidenavConfig,
-    open: state.layout.sidenavOpen,
+    routes: state.layout.routes,
+    open: state.layout.sideNavOpen,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     handleClose: () => {
-      dispatch(layoutActions.closeSidenav())
+      dispatch(layoutActions.closeSideNav())
+    },
+    handleAddStopClick: () => {
+      dispatch(layoutActions.openAddStopDialog())
     },
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SidenavComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(SideNavComponent)

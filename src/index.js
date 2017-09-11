@@ -1,6 +1,5 @@
 import 'babel-polyfill'
 import 'typeface-roboto'
-import defaultTheme from 'material-ui/styles/theme'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
@@ -17,12 +16,9 @@ const store = configureStore()
 const rootElement = document.getElementById('root')
 
 const muiTheme = createMuiTheme({
-  ...defaultTheme(),
   palette: {
-    ...defaultTheme().palette,
     primary: purple,
     accent: green,
-    type: 'dark',
   },
 })
 
