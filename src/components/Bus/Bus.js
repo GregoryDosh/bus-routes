@@ -79,6 +79,7 @@ Bus.defaultProps = {
   departureText: '',
   departureTime: '',
   description: '',
+  direction: '',
   location: '',
   route: '',
   gmapsAPIKey: '',
