@@ -72,17 +72,15 @@ Bus.propTypes = {
   direction: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   route: PropTypes.string.isRequired,
-  gmapsAPIKey: PropTypes.string,
 }
 
 Bus.defaultProps = {
-  departureText: '',
+  departureText: 'unknown',
   departureTime: '',
-  description: '',
-  direction: '',
+  description: 'Unknown',
+  direction: 'Eastbound',
   location: '',
-  route: '',
-  gmapsAPIKey: '',
+  route: '1A',
 }
 
 export default Bus
