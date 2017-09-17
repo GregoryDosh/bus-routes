@@ -7,18 +7,30 @@ import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import { Helmet } from 'react-helmet'
 import { renderRoutes } from 'react-router-config'
+import { withStyles } from 'material-ui/styles'
 
 import SideNav from '../../containers/SideNav/SideNav.js'
 import AddStop from '../../containers/AddStop/AddStop.js'
-import './Layout.scss'
 
-const Layout = ({ layoutActions, helmetTitle, route }) => (
-  <div className="app">
+const styles = (theme) => ({
+  root: {
+    display: 'flex',
+  },
+  header: {
+    height: '64px',
+  },
+  body: {
+    paddingTop: '64px',
+  },
+})
+
+const Layout = ({ layoutActions, helmetTitle, route, classes }) => (
+  <div className={classes.root}>
     <Helmet
       defaultTitle="Bus Routes"
       titleTemplate="%s - Bus Routes"
     />
-    <div className="appHeader">
+    <div className={classes.header}>
       <AppBar>
         <Toolbar>
           <IconButton onClick={layoutActions.openSideNav} color="contrast" aria-label="Menu">
@@ -37,13 +49,14 @@ const Layout = ({ layoutActions, helmetTitle, route }) => (
       <SideNav />
       <AddStop />
     </div>
-    <div className="appBody">
+    <div className={classes.body}>
       {renderRoutes(route.routes)}
     </div>
   </div>
 )
 
 Layout.propTypes = {
+  classes: PropTypes.object.isRequired,
   route: PropTypes.object.isRequired,
   helmetTitle: PropTypes.string,
   layoutActions: PropTypes.shape({
@@ -52,6 +65,7 @@ Layout.propTypes = {
 }
 
 Layout.defaultProps = {
+  classes: {},
   helmetTitle: undefined,
   layoutActions: {
     sidenav: () => {},
@@ -61,4 +75,4 @@ Layout.defaultProps = {
   },
 }
 
-export default Layout
+export default withStyles(styles)(Layout)

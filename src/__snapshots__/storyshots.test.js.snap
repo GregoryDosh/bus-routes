@@ -1,17 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Bus with default props 1`] = `
+exports[`Storyshots Components/404 with default props 1`] = `
 <div
-  className="MuiPaper-root-1 MuiPaper-shadow8-11 MuiPaper-rounded-2 bus"
+  className="FourOhFour-root-1"
 >
   <div
-    className="MuiCardContent-root-33 MuiCardHeader-root-28"
+    className="FourOhFour-paper-2"
   >
     <div
-      className="MuiCardHeader-avatar-29"
+      className="MuiPaper-root-4 MuiPaper-shadow5-11 MuiPaper-rounded-5 FourOhFour-message-3"
+    >
+      <h1
+        className="MuiTypography-root-31 MuiTypography-display2-34"
+      >
+        HTTP 404 - Not Found
+      </h1>
+      <h3
+        className="MuiTypography-root-31 MuiTypography-subheading-38"
+      >
+        Couldn't find path: 
+        
+      </h3>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Bus with default props 1`] = `
+<div
+  className="MuiPaper-root-4 MuiPaper-shadow8-14 MuiPaper-rounded-5 Bus-root-53"
+>
+  <div
+    className="MuiCardContent-root-60 MuiCardHeader-root-55"
+  >
+    <div
+      className="MuiCardHeader-avatar-56"
     >
       <div
-        className="MuiAvatar-root-34 MuiAvatar-colorDefault-35"
+        className="MuiAvatar-root-61 MuiAvatar-colorDefault-62"
         style={
           Object {
             "backgroundColor": "hsl(235, 100%, 33%)",
@@ -26,26 +52,26 @@ exports[`Storyshots Bus with default props 1`] = `
       </div>
     </div>
     <div
-      className="MuiCardHeader-content-30"
+      className="MuiCardHeader-content-57"
     >
       <span
-        className="MuiTypography-root-37 MuiTypography-body2-45 MuiCardHeader-title-31"
+        className="MuiTypography-root-31 MuiTypography-body2-39 MuiCardHeader-title-58"
       >
         <h1
-          className="MuiTypography-root-37 MuiTypography-display1-41"
+          className="MuiTypography-root-31 MuiTypography-display1-35"
         >
           Unknown
         </h1>
       </span>
       <span
-        className="MuiTypography-root-37 MuiTypography-body2-45 MuiTypography-colorSecondary-57 MuiCardHeader-subheader-32"
+        className="MuiTypography-root-31 MuiTypography-body2-39 MuiTypography-colorSecondary-51 MuiCardHeader-subheader-59"
       >
         1A - Eastbound
       </span>
     </div>
   </div>
   <div
-    className="MuiCardMedia-root-59 busMedia"
+    className="MuiCardMedia-root-64 Bus-media-54"
     style={
       Object {
         "backgroundImage": "url(bus-eastbound.svg)",
@@ -54,10 +80,10 @@ exports[`Storyshots Bus with default props 1`] = `
     title="1A - Eastbound"
   />
   <div
-    className="MuiCardContent-root-33"
+    className="MuiCardContent-root-60"
   >
     <h2
-      className="MuiTypography-root-37 MuiTypography-title-43 MuiTypography-alignCenter-50"
+      className="MuiTypography-root-31 MuiTypography-title-37 MuiTypography-alignCenter-44"
     >
       Departing 
       unknown
@@ -68,18 +94,18 @@ exports[`Storyshots Bus with default props 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bus with location 1`] = `
+exports[`Storyshots Components/Bus with location 1`] = `
 <div
-  className="MuiPaper-root-1 MuiPaper-shadow8-11 MuiPaper-rounded-2 bus"
+  className="MuiPaper-root-4 MuiPaper-shadow8-14 MuiPaper-rounded-5 Bus-root-53"
 >
   <div
-    className="MuiCardContent-root-33 MuiCardHeader-root-28"
+    className="MuiCardContent-root-60 MuiCardHeader-root-55"
   >
     <div
-      className="MuiCardHeader-avatar-29"
+      className="MuiCardHeader-avatar-56"
     >
       <div
-        className="MuiAvatar-root-34 MuiAvatar-colorDefault-35"
+        className="MuiAvatar-root-61 MuiAvatar-colorDefault-62"
         style={
           Object {
             "backgroundColor": "hsl(235, 100%, 33%)",
@@ -94,26 +120,26 @@ exports[`Storyshots Bus with location 1`] = `
       </div>
     </div>
     <div
-      className="MuiCardHeader-content-30"
+      className="MuiCardHeader-content-57"
     >
       <span
-        className="MuiTypography-root-37 MuiTypography-body2-45 MuiCardHeader-title-31"
+        className="MuiTypography-root-31 MuiTypography-body2-39 MuiCardHeader-title-58"
       >
         <h1
-          className="MuiTypography-root-37 MuiTypography-display1-41"
+          className="MuiTypography-root-31 MuiTypography-display1-35"
         >
           Unknown
         </h1>
       </span>
       <span
-        className="MuiTypography-root-37 MuiTypography-body2-45 MuiTypography-colorSecondary-57 MuiCardHeader-subheader-32"
+        className="MuiTypography-root-31 MuiTypography-body2-39 MuiTypography-colorSecondary-51 MuiCardHeader-subheader-59"
       >
         1A - Eastbound
       </span>
     </div>
   </div>
   <div
-    className="MuiCardMedia-root-59 busMedia"
+    className="MuiCardMedia-root-64 Bus-media-54"
     style={
       Object {
         "backgroundImage": "url(//maps.googleapis.com/maps/api/staticmap?size=400x350&maptype=roadmap&zoom=15&center=44.97167,-93.24725&markers=color:blue|44.97167,-93.24725&key=AIzaSyC3XH68CcTNbGGsxnHBCowhW2OaV_ITF2g)",
@@ -122,10 +148,10 @@ exports[`Storyshots Bus with location 1`] = `
     title="1A - Eastbound"
   />
   <div
-    className="MuiCardContent-root-33"
+    className="MuiCardContent-root-60"
   >
     <h2
-      className="MuiTypography-root-37 MuiTypography-title-43 MuiTypography-alignCenter-50"
+      className="MuiTypography-root-31 MuiTypography-title-37 MuiTypography-alignCenter-44"
     >
       Departing 
       unknown
@@ -136,18 +162,18 @@ exports[`Storyshots Bus with location 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bus with long description 1`] = `
+exports[`Storyshots Components/Bus with long description 1`] = `
 <div
-  className="MuiPaper-root-1 MuiPaper-shadow8-11 MuiPaper-rounded-2 bus"
+  className="MuiPaper-root-4 MuiPaper-shadow8-14 MuiPaper-rounded-5 Bus-root-53"
 >
   <div
-    className="MuiCardContent-root-33 MuiCardHeader-root-28"
+    className="MuiCardContent-root-60 MuiCardHeader-root-55"
   >
     <div
-      className="MuiCardHeader-avatar-29"
+      className="MuiCardHeader-avatar-56"
     >
       <div
-        className="MuiAvatar-root-34 MuiAvatar-colorDefault-35"
+        className="MuiAvatar-root-61 MuiAvatar-colorDefault-62"
         style={
           Object {
             "backgroundColor": "hsl(235, 100%, 33%)",
@@ -162,26 +188,26 @@ exports[`Storyshots Bus with long description 1`] = `
       </div>
     </div>
     <div
-      className="MuiCardHeader-content-30"
+      className="MuiCardHeader-content-57"
     >
       <span
-        className="MuiTypography-root-37 MuiTypography-body2-45 MuiCardHeader-title-31"
+        className="MuiTypography-root-31 MuiTypography-body2-39 MuiCardHeader-title-58"
       >
         <h1
-          className="MuiTypography-root-37 MuiTypography-display1-41"
+          className="MuiTypography-root-31 MuiTypography-display1-35"
         >
           Here we go, somewhere into the wild blue yonder!
         </h1>
       </span>
       <span
-        className="MuiTypography-root-37 MuiTypography-body2-45 MuiTypography-colorSecondary-57 MuiCardHeader-subheader-32"
+        className="MuiTypography-root-31 MuiTypography-body2-39 MuiTypography-colorSecondary-51 MuiCardHeader-subheader-59"
       >
         1A - Eastbound
       </span>
     </div>
   </div>
   <div
-    className="MuiCardMedia-root-59 busMedia"
+    className="MuiCardMedia-root-64 Bus-media-54"
     style={
       Object {
         "backgroundImage": "url(bus-eastbound.svg)",
@@ -190,10 +216,10 @@ exports[`Storyshots Bus with long description 1`] = `
     title="1A - Eastbound"
   />
   <div
-    className="MuiCardContent-root-33"
+    className="MuiCardContent-root-60"
   >
     <h2
-      className="MuiTypography-root-37 MuiTypography-title-43 MuiTypography-alignCenter-50"
+      className="MuiTypography-root-31 MuiTypography-title-37 MuiTypography-alignCenter-44"
     >
       Departing 
       unknown
@@ -204,105 +230,27 @@ exports[`Storyshots Bus with long description 1`] = `
 </div>
 `;
 
-exports[`Storyshots Welcome to Storybook 1`] = `
-<article
-  className="css-1fqbdip"
+exports[`Storyshots Components/Home with default props 1`] = `
+<div
+  className="Home-root-65"
 >
-  <h1
-    className="css-nil"
+  <div
+    className="Home-paper-66"
   >
-    Welcome to storybook
-  </h1>
-  <p>
-    This is a UI component dev environment for your app.
-  </p>
-  <p>
-    We've added some basic stories inside the
-     
-    <code
-      className="css-mteq83"
+    <div
+      className="MuiPaper-root-4 MuiPaper-shadow5-11 MuiPaper-rounded-5 Home-message-67"
     >
-      src/stories
-    </code>
-     
-    directory.
-    <br />
-    A story is a single state of one or more UI components. You can have as many stories as you want.
-    <br />
-    (Basically a story is like a visual test case.)
-  </p>
-  <p>
-    See these sample
-     
-    <a
-      className="css-ca0824"
-      onClick={[Function]}
-      role="button"
-      tabIndex="0"
-    >
-      stories
-    </a>
-     
-    for a component called
-     
-    <code
-      className="css-mteq83"
-    >
-      Button
-    </code>
-    .
-  </p>
-  <p>
-    Just like that, you can add your own components as stories.
-    <br />
-    You can also edit those components and see changes right away.
-    <br />
-    (Try editing the 
-    <code
-      className="css-mteq83"
-    >
-      Button
-    </code>
-     stories located at 
-    <code
-      className="css-mteq83"
-    >
-      src/stories/index.js
-    </code>
-    .)
-  </p>
-  <p>
-    Usually we create stories with smaller UI components in the app.
-    <br />
-    Have a look at the
-     
-    <a
-      className="css-ca0824"
-      href="https://storybook.js.org/basics/writing-stories"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      Writing Stories
-    </a>
-     
-    section in our documentation.
-  </p>
-  <p
-    className="css-bwdon3"
-  >
-    <b>
-      NOTE:
-    </b>
-    <br />
-    Have a look at the
-     
-    <code
-      className="css-mteq83"
-    >
-      .storybook/webpack.config.js
-    </code>
-     
-    to add webpack loaders and plugins you are using in this project.
-  </p>
-</article>
+      <h1
+        className="MuiTypography-root-31 MuiTypography-display4-32"
+      >
+        Welcome!
+      </h1>
+      <h3
+        className="MuiTypography-root-31 MuiTypography-subheading-38"
+      >
+        Select or add a new bus stop from the menu.
+      </h3>
+    </div>
+  </div>
+</div>
 `;

@@ -1,17 +1,55 @@
 import Avatar from 'material-ui/Avatar'
-import Typography from 'material-ui/Typography'
 import Card, { CardContent, CardHeader, CardMedia } from 'material-ui/Card'
 import PropTypes from 'prop-types'
 import React from 'react'
+import Typography from 'material-ui/Typography'
+import { withStyles } from 'material-ui/styles'
 
 import eastBus from '../../images/bus-eastbound.svg'
 import westBus from '../../images/bus-westbound.svg'
 import apiConfig from '../../config/apiConfig'
-import './Bus.scss'
-
 import { stringHSLColorHash } from '../../services/colorService'
 
-const Bus = ({departureText, departureTime, description, direction, location, route}) => {
+const styles = (theme) => ({
+  root: {
+    width: '415px',
+    maxHeight: '525px',
+    '& > div > div span:first-child': {
+      width: '280px',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+    },
+    '&:active, &:hover': {
+      '& > div > div > span:first-child': {
+        width: '300px',
+        lineHeight: '32px',
+        overflow: 'visible',
+        whiteSpace: 'normal',
+        position: 'absolute',
+        backgroundColor: '#FFF',
+        border: 'grey',
+        borderRadius: '15px',
+        borderStyle: 'outset',
+        marginTop: '-3px',
+        marginLeft: '-3px',
+      },
+      '& > div > div > span:nth-child(2)': {
+        marginTop: '40px',
+      },
+    },
+  },
+  media: {
+    backgroundPosition: 'center center',
+    height: '350px',
+    width: '415px !important',
+    backgroundSize: 'auto !important',
+    borderRadius: '50px',
+    border: 'none',
+  },
+})
+
+const Bus = ({departureText, departureTime, description, direction, location, route, classes}) => {
   let busImage
   let markerColor
   if (location.length > 0 && apiConfig.googleMapsAPIKey.length > 0) {
@@ -30,7 +68,7 @@ const Bus = ({departureText, departureTime, description, direction, location, ro
   }
 
   return (
-    <Card className="bus" raised>
+    <Card className={classes.root} raised>
       <CardHeader
         title={
           <Typography type="display1">
@@ -52,7 +90,7 @@ const Bus = ({departureText, departureTime, description, direction, location, ro
         }
       />
       <CardMedia
-        className="busMedia"
+        className={classes.media}
         image={busImage}
         title={`${route} - ${direction}`}
       />
@@ -66,6 +104,7 @@ const Bus = ({departureText, departureTime, description, direction, location, ro
 }
 
 Bus.propTypes = {
+  classes: PropTypes.object.isRequired,
   departureText: PropTypes.string.isRequired,
   departureTime: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -75,6 +114,7 @@ Bus.propTypes = {
 }
 
 Bus.defaultProps = {
+  classes: {},
   departureText: 'unknown',
   departureTime: '',
   description: 'Unknown',
@@ -83,4 +123,4 @@ Bus.defaultProps = {
   route: '1A',
 }
 
-export default Bus
+export default withStyles(styles)(Bus)

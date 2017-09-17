@@ -6,8 +6,6 @@ import { Helmet } from 'react-helmet'
 
 import Bus from '../Bus/Bus'
 
-import './Stop.scss'
-
 class Stop extends React.Component {
   componentWillMount () {
     this.props.layoutActions.setHelmetTitle(`${this.props.stop.description} - ${this.props.stop.number}`)
@@ -32,7 +30,7 @@ class Stop extends React.Component {
 
   render () {
     return (
-      <div style={{marginTop: '64px', marginLeft: '10px', marginRight: '10px'}}>
+      <div>
         <Helmet title={this.props.helmetTitle} />
         <Typography type="display2" align="center" gutterBottom>
           {this.props.stop.description}

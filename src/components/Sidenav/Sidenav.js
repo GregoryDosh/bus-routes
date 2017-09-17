@@ -9,17 +9,27 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Toolbar from 'material-ui/Toolbar'
 import { Link } from 'react-router-dom'
+import { withStyles } from 'material-ui/styles'
 
-import './SideNav.scss'
+const styles = (theme) => ({
+  content: {
+    '& a:link': {
+      textDecoration: 'none',
+    },
+  },
+  header: {
+    height: '64px',
+  },
+})
 
-const SideNav = ({ open, handleClose, handleAddStopClick, routes }) => (
+const SideNav = ({ open, handleClose, handleAddStopClick, routes, classes }) => (
   <div>
     <Drawer
       open={open}
       onRequestClose={handleClose}
       onClick={handleClose}
     >
-      <div className="sideNav-header">
+      <div className={classes.header}>
         <AppBar>
           <Toolbar>
             <IconButton onClick={handleClose} color="contrast" aria-label="Close">
@@ -29,7 +39,7 @@ const SideNav = ({ open, handleClose, handleAddStopClick, routes }) => (
           </Toolbar>
         </AppBar>
       </div>
-      <div className="sideNav-content">
+      <div className={classes.content}>
         <List>
           <Link to="/" tabIndex={-1}>
             <ListItem button>
@@ -68,6 +78,7 @@ const SideNav = ({ open, handleClose, handleAddStopClick, routes }) => (
 )
 
 SideNav.propTypes = {
+  classes: PropTypes.object.isRequired,
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
   handleAddStopClick: PropTypes.func.isRequired,
@@ -82,10 +93,11 @@ SideNav.propTypes = {
 }
 
 SideNav.defaultProps = {
+  classes: {},
   open: false,
   handleClose: () => {},
   handleAddStopClick: () => {},
   routes: [],
 }
 
-export default SideNav
+export default withStyles(styles)(SideNav)
