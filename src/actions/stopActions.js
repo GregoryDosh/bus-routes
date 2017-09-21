@@ -14,11 +14,12 @@ const setStopDescription = (stop, description) => {
   }
 }
 
-const setStopBusses = (stop, busses) => {
+const setStopBusses = (stop, busses, refreshTime) => {
   return {
     type: types.SET_STOP_BUSSES,
     number: stop,
     busses,
+    refreshTime,
   }
 }
 
@@ -69,7 +70,7 @@ export const getStopBusses = (stop) => {
             route: `${bus.Route}${bus.Terminal}`,
           })
         }
-        return dispatch(setStopBusses(stop, busses))
+        return dispatch(setStopBusses(stop, busses, moment().format('dddd, MMMM Do YYYY, h:mm:ss a').toString()))
       }).catch(error => {
         console.error(error)
       })

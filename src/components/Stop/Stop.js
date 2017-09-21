@@ -3,8 +3,24 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Typography from 'material-ui/Typography'
 import { Helmet } from 'react-helmet'
+import { withStyles } from 'material-ui/styles'
+import moment from 'moment'
+import Button from 'material-ui/Button'
+import RefreshIcon from 'material-ui-icons/Refresh'
 
 import Bus from '../Bus/Bus'
+
+const styles = (theme) => ({
+  header: {
+    display: 'flex',
+  },
+  button: {
+    margin: theme.spacing.unit,
+    position: 'fixed',
+    right: 0,
+    zIndex: 9999,
+  },
+})
 
 class Stop extends React.Component {
   componentWillMount () {
@@ -29,18 +45,30 @@ class Stop extends React.Component {
   }
 
   render () {
+    const { classes, helmetTitle, stopActions, stop } = this.props
     return (
-      <div>
-        <Helmet title={this.props.helmetTitle} />
-        <Typography type="display2" align="center" gutterBottom>
-          {this.props.stop.description}
+      <div style={{padding: '0px 16px'}}>
+        <Button
+          fab
+          color="primary"
+          className={classes.button}
+          onClick={() => stopActions.getStopBusses(stop.number)}
+        >
+          <RefreshIcon />
+        </Button>
+        <Helmet title={helmetTitle} />
+        <Typography type="display2" align="center">
+          {stop.description}
+        </Typography>
+        <Typography type="subheading" align="center" gutterBottom>
+          {stop.refreshTime}
         </Typography>
         <Grid
           container
           justify="space-around"
         >
-          { this.props.stop.busses.length > 0 &&
-          this.props.stop.busses.map((r, n) => {
+          { stop.busses.length > 0 &&
+          stop.busses.map((r, n) => {
             return (
               <Grid key={n} item>
                 <Bus {...r} />
@@ -55,6 +83,7 @@ class Stop extends React.Component {
 }
 
 Stop.propTypes = {
+  classes: PropTypes.object.isRequired,
   helmetTitle: PropTypes.string.isRequired,
   layoutActions: PropTypes.shape({
     setHelmetTitle: PropTypes.func.isRequired,
@@ -66,6 +95,7 @@ Stop.propTypes = {
   stop: PropTypes.shape({
     description: PropTypes.string.isRequired,
     number: PropTypes.number.isRequired,
+    refreshTime: PropTypes.string.isRequired,
     busses: PropTypes.arrayOf(PropTypes.shape({
       departureText: PropTypes.string.isRequired,
       departureTime: PropTypes.string.isRequired,
@@ -78,6 +108,7 @@ Stop.propTypes = {
 }
 
 Stop.defaultProps = {
+  classes: {},
   helmetTitle: '',
   layoutActions: {
     setHelmetTitle: () => {},
@@ -90,7 +121,8 @@ Stop.defaultProps = {
     description: 'Stop',
     number: 0,
     busses: [],
+    refreshTime: moment().format('dddd, MMMM Do YYYY, h:mm:ss a').toString(),
   },
 }
 
-export default Stop
+export default withStyles(styles)(Stop)

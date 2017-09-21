@@ -14,15 +14,15 @@ const styles = (theme) => ({
   root: {
     width: '415px',
     maxHeight: '525px',
-    '& > div > div span:first-child': {
-      width: '280px',
+    '& > div > div > span > h1': {
+      maxWidth: '300px',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
     },
     '&:active, &:hover': {
-      '& > div > div > span:first-child': {
-        width: '300px',
+      '& > div > div > span > h1': {
+        maxWidth: '300px',
         lineHeight: '32px',
         overflow: 'visible',
         whiteSpace: 'normal',
@@ -31,7 +31,7 @@ const styles = (theme) => ({
         border: 'grey',
         borderRadius: '15px',
         borderStyle: 'outset',
-        marginTop: '-3px',
+        marginTop: '1px',
         marginLeft: '-3px',
       },
       '& > div > div > span:nth-child(2)': {
@@ -42,8 +42,8 @@ const styles = (theme) => ({
   media: {
     backgroundPosition: 'center center',
     height: '350px',
-    width: '415px !important',
-    backgroundSize: 'auto !important',
+    width: '415px',
+    backgroundSize: 'auto',
     borderRadius: '50px',
     border: 'none',
   },

@@ -1,12 +1,14 @@
 import * as types from '../actions/actionTypes'
+import moment from 'moment'
 
-const initialState = {
+const initialState = () => ({
   description: 'Stop',
   number: 0,
   busses: [],
-}
+  refreshTime: moment().toString(),
+})
 
-export default function stopReducer (state = initialState, action) {
+export default function stopReducer (state = initialState(), action) {
   switch (action.type) {
     case types.SET_STOP_DESCRIPTION:
       return {
@@ -18,6 +20,7 @@ export default function stopReducer (state = initialState, action) {
       return {
         ...state,
         busses: action.busses,
+        refreshTime: action.refreshTime,
       }
 
     default:

@@ -1,7 +1,10 @@
 import reducer from './stopReducer'
 import * as types from '../actions/actionTypes'
+import moment from 'moment'
 
 describe('layout reducer', () => {
+  Date.now = jest.fn(() => new Date(Date.UTC(2017, 1, 15)).valueOf())
+
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
@@ -10,6 +13,7 @@ describe('layout reducer', () => {
         description: 'Stop',
         number: 0,
         busses: [],
+        refreshTime: moment('2017-02-15T00:00:00.000Z').toString(),
       }
     )
   })
