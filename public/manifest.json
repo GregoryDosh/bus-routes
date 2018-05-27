@@ -1,5 +1,5 @@
 {
-  "short_name": "Bus Routes",
+  "short_name": "MetroTransit",
   "name": "Auengun's NexTrip Based Bus Routes",
   "permissions": [
           "storage"
