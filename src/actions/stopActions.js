@@ -4,8 +4,6 @@ import api from '../config/apiConfig'
 import axios from 'axios'
 import moment from 'moment'
 
-const returnName = /resultHeader">(.*?)<\/span>/
-
 const setStopDescription = (stop, description) => {
   return {
     type: types.SET_STOP_DESCRIPTION,
@@ -23,56 +21,37 @@ const setStopBusses = (stop, busses, refreshTime) => {
   }
 }
 
-export const getStopDescription = (stop) => {
+export const getStopInformation = (stop) => {
   return function (dispatch) {
     return axios({
-      url: api.stop.descriptionHost(stop),
+      url: api.departures.API(stop),
       method: 'GET',
     })
       .then(response => {
-        const possibleMatch = returnName.exec(response.data)
-        if (possibleMatch && possibleMatch.length > 1) {
-          return dispatch(setStopDescription(stop, possibleMatch[1]))
-        } else {
-          return dispatch(setStopDescription(stop, `Unknown Stop ${stop}`))
+        let stop = response.data.data.departures
+        dispatch(setStopDescription(stop, stop.stop_details.name))
+        let busses = []
+        console.log(moment)
+        for (let bus of stop.departures) {
+          const departureTime = moment(bus.departure_time)
+          console.log(bus.departure_time)
+          busses.push({
+            departureText: departureTime.fromNow(),
+            departureTime: departureTime.format('h:mm a'),
+            description: bus.description,
+            direction: titleCase(bus.route_direction),
+            map: departureTime.diff(moment.now(), 'minutes') <= 30 ? bus.map : '',
+            route: `${bus.route}${bus.terminal}`,
+          })
         }
+        dispatch(setStopBusses(stop, busses, moment().format('dddd, MMMM Do YYYY, h:mm:ss a').toString()))
       }).catch(error => {
         console.error(error)
-        return dispatch(setStopDescription(stop, `Unknown Stop ${stop}`))
+        dispatch(setStopDescription(stop, `Unknown Stop ${stop}`))
       })
   }
-}
-
-const busTimeParse = (timeString) => {
-  return moment(parseInt(timeString.substring(6, 19)))
 }
 
 const titleCase = (str) => {
   return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase()
-}
-
-export const getStopBusses = (stop) => {
-  return function (dispatch) {
-    return axios({
-      url: api.stop.bussesHost(stop),
-      method: 'GET',
-    })
-      .then(response => {
-        let busses = []
-        for (let bus of response.data.sort((a, b) => a.DepartureTime < b.DepartureTime ? -1 : 1)) {
-          const departureTime = busTimeParse(bus.DepartureTime)
-          busses.push({
-            departureText: departureTime.fromNow(),
-            departureTime: departureTime.format('h:mm a'),
-            description: bus.Description,
-            direction: titleCase(bus.RouteDirection),
-            location: bus.Actual ? `${bus.VehicleLatitude},${bus.VehicleLongitude}` : '',
-            route: `${bus.Route}${bus.Terminal}`,
-          })
-        }
-        return dispatch(setStopBusses(stop, busses, moment().format('dddd, MMMM Do YYYY, h:mm:ss a').toString()))
-      }).catch(error => {
-        console.error(error)
-      })
-  }
 }

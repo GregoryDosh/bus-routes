@@ -1,9 +1,9 @@
-import Paper from 'material-ui/Paper'
+import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Typography from 'material-ui/Typography'
+import Typography from '@material-ui/core/Typography'
 import { Helmet } from 'react-helmet'
-import { withStyles } from 'material-ui/styles'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = (theme) => ({
   root: {
@@ -40,10 +40,10 @@ class FourOhFour extends React.Component {
         <Helmet title={this.props.helmetTitle} />
         <div className={classes.paper}>
           <Paper className={classes.message} elevation={5}>
-            <Typography type="display2" component="h1">
+            <Typography variant="display2" component="h1">
               HTTP 404 - Not Found
             </Typography>
-            <Typography type="subheading">
+            <Typography variant="subheading">
               Couldn't find path: {location.pathname}
             </Typography>
           </Paper>

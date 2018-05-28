@@ -2,7 +2,7 @@ import merge from 'lodash/merge'
 
 const baseConfig = {
   departures: {
-    departuresAPI: (stopInt) => {
+    API: (stopInt) => {
       return ''
     },
   },
@@ -11,15 +11,15 @@ const baseConfig = {
 const environmentConfigs = {
   development: {
     departures: {
-      departuresAPI: (stopInt) => {
-        return `https://localhost/graphql?&query={departures(stop_id:${stopInt}, map_width:800, map_height:600, map_scale:2){stop_id, full_map, update_time, stop_details{name}}}`
+      API: (stopInt) => {
+        return `http://localhost:1234/graphql?&query={departures(stop_id:${stopInt}, map_width:400, map_height:350){stop_id, full_map, update_time, stop_details{ name }, departures{ departure_time, description, route_direction, route, terminal, map }}}`
       },
     },
   },
   production: {
     departures: {
-      departuresAPI: (stopInt) => {
-        return `https://nextrip.auengun.net/graphql?&query={departures(stop_id:${stopInt}, map_width:800, map_height:600, map_scale:2){stop_id, full_map, update_time, stop_details{name}}}`
+      API: (stopInt) => {
+        return `https://nextrip.auengun.net/graphql?&query={departures(stop_id:${stopInt}, map_width:400, map_height:350){stop_id, full_map, update_time, stop_details{ name }, departures{ departure_time, description, route_direction, route, terminal, map }}}`
       },
     },
   },

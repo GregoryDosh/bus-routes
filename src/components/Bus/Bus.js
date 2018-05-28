@@ -1,13 +1,15 @@
-import Avatar from 'material-ui/Avatar'
-import Card, { CardContent, CardHeader, CardMedia } from 'material-ui/Card'
+import Avatar from '@material-ui/core/Avatar'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardMedia from '@material-ui/core/CardMedia'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Typography from 'material-ui/Typography'
-import { withStyles } from 'material-ui/styles'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
 
 import eastBus from '../../images/bus-eastbound.svg'
 import westBus from '../../images/bus-westbound.svg'
-import apiConfig from '../../config/apiConfig'
 import { stringHSLColorHash } from '../../services/colorService'
 
 const styles = (theme) => ({
@@ -49,16 +51,10 @@ const styles = (theme) => ({
   },
 })
 
-const Bus = ({departureText, departureTime, description, direction, location, route, classes}) => {
+const Bus = ({departureText, departureTime, description, direction, map, route, classes}) => {
   let busImage
-  let markerColor
-  if (location.length > 0 && apiConfig.googleMapsAPIKey.length > 0) {
-    if (direction === 'Eastbound') {
-      markerColor = 'blue'
-    } else {
-      markerColor = 'red'
-    }
-    busImage = `//maps.googleapis.com/maps/api/staticmap?size=400x350&maptype=roadmap&zoom=15&center=${location}&markers=color:${markerColor}|${location}&key=${apiConfig.googleMapsAPIKey}`
+  if (map !== '') {
+    busImage = `//${map}`
   } else {
     if (direction === 'Eastbound') {
       busImage = eastBus
@@ -71,7 +67,7 @@ const Bus = ({departureText, departureTime, description, direction, location, ro
     <Card className={classes.root} raised>
       <CardHeader
         title={
-          <Typography type="display1">
+          <Typography variant="display1">
             {description}
           </Typography>
         }
@@ -95,7 +91,7 @@ const Bus = ({departureText, departureTime, description, direction, location, ro
         title={`${route} - ${direction}`}
       />
       <CardContent>
-        <Typography type="title" align="center">
+        <Typography variant="title" align="center">
           Departing {departureText}. {departureTime}
         </Typography>
       </CardContent>
@@ -109,7 +105,7 @@ Bus.propTypes = {
   departureTime: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   direction: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
+  map: PropTypes.string.isRequired,
   route: PropTypes.string.isRequired,
 }
 
@@ -119,7 +115,7 @@ Bus.defaultProps = {
   departureTime: '',
   description: 'Unknown',
   direction: 'Eastbound',
-  location: '',
+  map: '',
   route: '1A',
 }
 

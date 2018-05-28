@@ -1,13 +1,16 @@
-import Button from 'material-ui/Button'
-import Dialog, { DialogActions, DialogContent } from 'material-ui/Dialog'
-import Input, { InputLabel } from 'material-ui/Input'
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Select from 'material-ui/Select'
-import TextField from 'material-ui/TextField'
-import Typography from 'material-ui/Typography'
-import { MenuItem } from 'material-ui/Menu'
-import { withStyles } from 'material-ui/styles'
+import Select from '@material-ui/core/Select'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
+import MenuItem from '@material-ui/core/MenuItem'
+import { withStyles } from '@material-ui/core/styles'
 
 import BusEast from '../../images/bus-eastbound.svg'
 import BusWest from '../../images/bus-westbound.svg'
@@ -82,12 +85,12 @@ class AddStop extends React.Component {
   render () {
     const { classes, open, handleClose, handleAdd } = this.props
     return (
-      <Dialog onRequestClose={() => {
+      <Dialog onClose={() => {
         handleClose()
         this.resetState()
       }} open={open}>
         <DialogContent>
-          <Typography type="display1">
+          <Typography variant="display1">
             Add New Stop
           </Typography>
           <form className={classes.container} noValidate autoComplete="off">

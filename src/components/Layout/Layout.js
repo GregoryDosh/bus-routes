@@ -1,13 +1,13 @@
-import AppBar from 'material-ui/AppBar'
-import IconButton from 'material-ui/IconButton'
-import MenuIcon from 'material-ui-icons/Menu'
+import AppBar from '@material-ui/core/AppBar'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Toolbar from 'material-ui/Toolbar'
-import Typography from 'material-ui/Typography'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 import { Helmet } from 'react-helmet'
 import { renderRoutes } from 'react-router-config'
-import { withStyles } from 'material-ui/styles'
+import { withStyles } from '@material-ui/core/styles'
 
 import SideNav from '../../containers/SideNav/SideNav.js'
 import AddStop from '../../containers/AddStop/AddStop.js'
@@ -33,17 +33,12 @@ const Layout = ({ layoutActions, helmetTitle, route, classes }) => (
     <div className={classes.header}>
       <AppBar>
         <Toolbar>
-          <IconButton onClick={layoutActions.openSideNav} color="contrast" aria-label="Menu">
+          <IconButton onClick={layoutActions.openSideNav} color="secondary" aria-label="Menu">
             <MenuIcon />
           </IconButton>
-          <Typography type="title" color="inherit" style={{flex: '1'}}>
+          <Typography variant="title" color="inherit" style={{flex: '1'}}>
             {helmetTitle}
           </Typography>
-          { false &&
-            <IconButton onClick={layoutActions.openSideNav} color="contrast" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
-          }
         </Toolbar>
       </AppBar>
       <SideNav />

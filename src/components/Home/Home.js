@@ -1,9 +1,9 @@
-import Paper from 'material-ui/Paper'
+import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Typography from 'material-ui/Typography'
+import Typography from '@material-ui/core/Typography'
 import { Helmet } from 'react-helmet'
-import { withStyles } from 'material-ui/styles'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = (theme) => ({
   root: {
@@ -39,10 +39,10 @@ class Home extends React.Component {
         <Helmet title={helmetTitle} />
         <div className={classes.paper}>
           <Paper className={classes.message} elevation={5}>
-            <Typography type="display4" component="h1">
+            <Typography variant="display4" component="h1">
               Welcome!
             </Typography>
-            <Typography type="subheading">
+            <Typography variant="subheading">
               Select or add a new bus stop from the menu.
             </Typography>
           </Paper>

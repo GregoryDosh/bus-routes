@@ -1,12 +1,12 @@
-import Grid from 'material-ui/Grid'
+import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Typography from 'material-ui/Typography'
+import Typography from '@material-ui/core/Typography'
 import { Helmet } from 'react-helmet'
-import { withStyles } from 'material-ui/styles'
+import { withStyles } from '@material-ui/core/styles'
 import moment from 'moment'
-import Button from 'material-ui/Button'
-import RefreshIcon from 'material-ui-icons/Refresh'
+import Button from '@material-ui/core/Button'
+import RefreshIcon from '@material-ui/icons/Refresh'
 
 import Bus from '../Bus/Bus'
 
@@ -25,8 +25,7 @@ const styles = (theme) => ({
 class Stop extends React.Component {
   componentWillMount () {
     this.props.layoutActions.setHelmetTitle(`${this.props.stop.description} - ${this.props.stop.number}`)
-    this.props.stopActions.getStopDescription(this.props.stop.number)
-    this.props.stopActions.getStopBusses(this.props.stop.number)
+    this.props.stopActions.getStopInformation(this.props.stop.number)
   }
 
   componentWillUnmount () {
@@ -39,8 +38,7 @@ class Stop extends React.Component {
     }
 
     if (this.props.stop.number !== nextProps.stop.number) {
-      this.props.stopActions.getStopDescription(nextProps.stop.number)
-      this.props.stopActions.getStopBusses(nextProps.stop.number)
+      this.props.stopActions.getStopInformation(nextProps.stop.number)
     }
   }
 
@@ -49,23 +47,24 @@ class Stop extends React.Component {
     return (
       <div style={{padding: '0px 16px'}}>
         <Button
-          fab
+          variant="fab"
           color="primary"
           className={classes.button}
-          onClick={() => stopActions.getStopBusses(stop.number)}
+          onClick={() => stopActions.getStopInformation(stop.number)}
         >
           <RefreshIcon />
         </Button>
         <Helmet title={helmetTitle} />
-        <Typography type="display2" align="center">
+        <Typography variant="display2" align="center">
           {stop.description}
         </Typography>
-        <Typography type="subheading" align="center" gutterBottom>
+        <Typography variant="subheading" align="center" gutterBottom>
           {stop.refreshTime}
         </Typography>
         <Grid
           container
           justify="space-around"
+          spacing={16}
         >
           { stop.busses.length > 0 &&
           stop.busses.map((r, n) => {
@@ -89,8 +88,7 @@ Stop.propTypes = {
     setHelmetTitle: PropTypes.func.isRequired,
   }).isRequired,
   stopActions: PropTypes.shape({
-    getStopDescription: PropTypes.func.isRequired,
-    getStopBusses: PropTypes.func.isRequired,
+    getStopInformation: PropTypes.func.isRequired,
   }).isRequired,
   stop: PropTypes.shape({
     description: PropTypes.string.isRequired,
@@ -101,7 +99,7 @@ Stop.propTypes = {
       departureTime: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       direction: PropTypes.string.isRequired,
-      location: PropTypes.string.isRequired,
+      map: PropTypes.string.isRequired,
       route: PropTypes.string.isRequired,
     })),
   }).isRequired,
@@ -114,8 +112,7 @@ Stop.defaultProps = {
     setHelmetTitle: () => {},
   },
   stopActions: {
-    getStopDescription: () => {},
-    getStopBusses: () => {},
+    getStopInformation: () => {},
   },
   stop: {
     description: 'Stop',
