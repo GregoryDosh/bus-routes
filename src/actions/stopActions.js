@@ -31,10 +31,8 @@ export const getStopInformation = (stop) => {
         let stop = response.data.data.departures
         dispatch(setStopDescription(stop, stop.stop_details.name))
         let busses = []
-        console.log(moment)
         for (let bus of stop.departures) {
           const departureTime = moment(bus.departure_time)
-          console.log(bus.departure_time)
           busses.push({
             departureText: departureTime.fromNow(),
             departureTime: departureTime.format('h:mm a'),
